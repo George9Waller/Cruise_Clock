@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.eslintcache
+.firebase/hosting.cHVibGlj.cache
+.firebase/hosting.YnVpbGQ.cache
+.firebaserc
+.idea/inspectionProfiles/Project_Default.xml
+.idea/vcs.xml
+firebase.json
