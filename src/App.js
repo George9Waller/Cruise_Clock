@@ -2,30 +2,34 @@ import {useState, useEffect} from "react";
 import './App.css';
 
 function App() {
-    const [seconds, setSeconds] = useState(0);
-    const hourHand = document.getElementById('hourHand');
-    const minuteHand = document.getElementById('minutesHand');
 
     useEffect(() => {
-        setInterval(() => setClock(), 1000);
+        setInterval(() => setClock(), 10);
     }, [])
 
     const setClock = () => {
-        const currentDate = new Date();
-        const secondsRatio = currentDate.getSeconds() / 60;
-        const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
-        const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
+        let startTime = new Date(2018,1,14).valueOf();
+        const difference = Date.now() - startTime;
+        let time = new Date(startTime + (difference *2220))
 
-        setRotation(hourHand, hoursRatio);
-        setRotation(minuteHand, minutesRatio);
+        console.log(difference)
+        if (difference) {
+            const secondsRatio = time.getSeconds() / 60;
+            const minutesRatio = (secondsRatio + time.getMinutes()) / 60;
+            const hoursRatio = (minutesRatio + time.getHours()) / 12;
+
+            setRotation('hourHand', hoursRatio);
+            setRotation('minutesHand', minutesRatio);
+        }
     }
 
-    const setRotation = (element, rotationRatio) => {
+    const setRotation = (elementid, rotationRatio) => {
         try {
-            element.style.setProperty('--rotation', rotationRatio * 360);
+            console.log('element found')
+            document.getElementById(elementid).style.setProperty('--rotation', rotationRatio * 360);
         }
         catch {
-            console.log(element)
+            console.log(elementid, 'Not found')
         }
     }
 
