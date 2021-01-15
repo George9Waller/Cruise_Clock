@@ -10,7 +10,7 @@ function App() {
     const setClock = () => {
         let startTime = new Date(2018,1,14).valueOf();
         const difference = Date.now() - startTime;
-        let time = new Date(startTime + (difference *2220))
+        let time = new Date(startTime + (difference *1920))
 
         console.log(difference)
         if (difference) {
@@ -35,6 +35,8 @@ function App() {
 
   return (
     <div className="App">
+        <h1 className="title">Time</h1>
+        <h3 className="title subtitle">the one thing you can't control?</h3>
         <div className="clock">
             <div id="hourHand" className="hand hour" data-hour-hand></div>
             <div id="minutesHand" className="hand minute" data-minute-hand></div>
